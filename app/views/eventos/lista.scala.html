@@ -1,0 +1,17 @@
+@(eventos: List[Evento])
+@main("Listagem Eventos"){
+	<table class="table">
+		<tr>
+			<th>Nome Evento</th>
+			<th>Site do Evento</th>
+		</tr>
+		
+		@for(evento <- eventos) {   
+			<tr> 
+				<td>@evento.getNome()</td>
+				<td>@evento.getSite()</td>
+			</tr>   
+		}
+	
+	</table>
+}
