@@ -15,12 +15,15 @@ public class EventosController extends Controller {
 	private static Form<Evento> eventoForm = Form.form(Evento.class);
 	
 	public static Result novo(){
-		Html view = novo.render(); 
+		Html view = novo.render(eventoForm); 
 		return ok(view);
 	}
 	
 	public static Result cria(){
 		Form<Evento> formFromRequest = eventoForm.bindFromRequest();
+		if(formFromRequest.hasErrors()){
+			return badRequest(novo.render(eventoForm));
+		}
 		Evento evento = formFromRequest.get();
 		Ebean.save(evento);
 		return redirect(routes.EventosController.lista());

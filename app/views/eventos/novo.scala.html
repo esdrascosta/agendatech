@@ -1,6 +1,10 @@
+@(eventoForm: Form[Evento])
+
+@import helper._
+
 @main("Novo Evento"){
-	<form class="form-horizontal" action="@routes.EventosController.cria()" method="POST">
-		
+	
+	@form(action = routes.EventosController.cria(), args = 'method -> "POST",'class -> "form-horizontal"){
 		<fieldset>
 		
 			<!-- Form Name -->
@@ -10,25 +14,28 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="nome">Nome</label>  
 			  <div class="col-md-4">
-			  <input id="nome" name="nome" type="text" placeholder="digite seu nome" class="form-control input-md">
-			    
+			  	@inputText(
+			  			eventoForm("nome"),
+			  			'placeholder -> "digite seu nome", 'class -> "form-control input-md")
 			  </div>
 			</div>
-			
 			<!-- email input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="emailParaContato">E-Mail para contato</label>  
 			  <div class="col-md-4">
-			  <input id="emailParaContato" name="emailParaContato" type="email" placeholder="digite seu email" class="form-control input-md">
-			    
+				@inputText(
+					 eventoForm("emailParaContato"), 
+					'type -> "email",
+					'placeholder -> "digite seu email",
+					'class -> "form-control input-md" )
 			  </div>
 			</div>
 			
 			<!-- descricao textarea -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="descricao">Descrição</label>
-			  <div class="col-md-4">                     
-			    <textarea class="form-control" id="descricao" name="descricao"></textarea>
+			  <div class="col-md-4"> 
+			  	@textarea(eventoForm("descricao"), 'class -> "form-control")                    
 			  </div>
 			</div>
 			
@@ -49,8 +56,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="site">Site</label>  
 			  <div class="col-md-4">
-			  <input id="site" name="site" type="text" placeholder="" class="form-control input-md">
-			    
+				  @inputText(eventoForm("site"),'class -> "form-control input-md")
 			  </div>
 			</div>
 			
@@ -58,8 +64,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="dataDeInicio">Data de Inicio</label>  
 			  <div class="col-md-2">
-			  <input id="dataDeInicio" name="dataDeInicio" type="date" placeholder="" class="form-control input-md">
-			    
+				  @inputDate(eventoForm("dataDeInicio"),'class -> "form-control input-md")
 			  </div>
 			</div>
 			
@@ -67,8 +72,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="dataDeFim">Data de Fim</label>  
 			  <div class="col-md-2">
-			  <input id="dataDeFim" name="dataDeFim" type="date" placeholder="" class="form-control input-md">
-			    
+			  	@inputDate(eventoForm("dataDeFim"),'class -> "form-control input-md")
 			  </div>
 			</div>
 			
@@ -81,5 +85,5 @@
 			</div>
 
 		</fieldset>
-	</form>
+		}
 }

@@ -9,19 +9,28 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.URL;
+
+import play.data.validation.Constraints.Email;
+import play.data.validation.Constraints.Required;
+
 @Entity
 public class Evento {
 
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Email
 	private String emailParaContato;
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	@Column(columnDefinition = "text")
+	@Required
 	private String descricao;
+	@URL
 	private String site;
 	private String twitter;
+	@Required
 	private String nome;
 	private Calendar dataDeInicio;
 	private Calendar dataDeFim;
