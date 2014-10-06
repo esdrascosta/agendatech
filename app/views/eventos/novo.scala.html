@@ -4,7 +4,8 @@
 
 @main("Novo Evento"){
 	
-	@form(action = routes.EventosController.cria(), args = 'method -> "POST",'class -> "form-horizontal"){
+	@form(action = routes.EventosController.cria(),'class -> "form-horizontal",'enctype -> "multipart/form-data"){
+		
 		<fieldset>
 		
 			<!-- Form Name -->
@@ -15,19 +16,16 @@
 			  <label class="col-md-4 control-label" for="nome">Nome</label>  
 			  <div class="col-md-4">
 			  	@inputText(
-			  			eventoForm("nome"),
-			  			'placeholder -> "digite seu nome", 'class -> "form-control input-md")
+			  			eventoForm("nome"), args = 'placeholder -> "digite seu nome", 'class -> "form-control input-md",'_label -> " ")
 			  </div>
 			</div>
 			<!-- email input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="emailParaContato">E-Mail para contato</label>  
 			  <div class="col-md-4">
-				@inputText(
-					 eventoForm("emailParaContato"), 
-					'type -> "email",
-					'placeholder -> "digite seu email",
-					'class -> "form-control input-md" )
+			  
+			  	@inputText(eventoForm("emailParaContato"),'_label -> "")
+				 
 			  </div>
 			</div>
 			
@@ -35,8 +33,9 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="descricao">Descrição</label>
 			  <div class="col-md-4"> 
-			  	@textarea(eventoForm("descricao"), 'class -> "form-control")                    
+			  	@textarea(eventoForm("descricao"), args =  'class -> "form-control",'_label -> "")        
 			  </div>
+			  	
 			</div>
 			
 			<!-- Select Basic -->
@@ -56,7 +55,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="site">Site</label>  
 			  <div class="col-md-4">
-				  @inputText(eventoForm("site"),'class -> "form-control input-md")
+				  @inputText(eventoForm("site"),args = 'class -> "form-control input-md",'_label -> " ")
 			  </div>
 			</div>
 			
@@ -64,7 +63,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="dataDeInicio">Data de Inicio</label>  
 			  <div class="col-md-2">
-				  @inputDate(eventoForm("dataDeInicio"),'class -> "form-control input-md")
+				  @inputDate(eventoForm("dataDeInicio"), args = 'class -> "form-control input-md",'_label -> " ")
 			  </div>
 			</div>
 			
@@ -72,8 +71,15 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="dataDeFim">Data de Fim</label>  
 			  <div class="col-md-2">
-			  	@inputDate(eventoForm("dataDeFim"),'class -> "form-control input-md")
+			  	@inputDate(eventoForm("dataDeFim"), args =  'class -> "form-control input-md",'_label -> "")
 			  </div>
+			</div>
+			
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="dataDeFim">Data de Fim</label>
+				<div class="col-md-2">
+					@inputFile(eventoForm("destaque"))					
+				</div>
 			</div>
 			
 			<!-- Novo Button -->

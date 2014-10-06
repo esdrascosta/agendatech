@@ -1,0 +1,7 @@
+constraint.required=Preenchimento obrigatório
+constraint.fromNow=A data deve ser maior que hoje
+constraint.email=Dever ser um email válido
+
+
+error.required=O campo não foi preenchido
+error.frowNow=A data informada não é maior que hoje
