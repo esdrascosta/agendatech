@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import models.Evento;
 import play.data.Form;
@@ -14,6 +15,7 @@ import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
 import play.twirl.api.Html;
+import views.html.eventos.*;
 
 import com.avaje.ebean.Ebean;
 public class EventosController extends Controller {
@@ -43,14 +45,19 @@ public class EventosController extends Controller {
 		RequestBody requestBody = request().body();
 		MultipartFormData multipartFormData = requestBody.asMultipartFormData();
 		FilePart filePart = multipartFormData.getFile("destaque");
-		File destaque = filePart.getFile();
-		File destino = new File("public/images/destaques",System.currentTimeMillis() + " " +filePart.getFilename());
-		try {
-			FileUtils.moveFile(destaque, destino);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(filePart != null){
+			
+			File destaque = filePart.getFile();
+			File destino = new File("public/images/destaques",System.currentTimeMillis() + filePart.getFilename());
+			try {
+				FileUtils.moveFile(destaque, destino);
+				return destino.getName();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		return destino.getName();
+		
+		return StringUtils.EMPTY;
 	}
 	
 	public static Result lista(){

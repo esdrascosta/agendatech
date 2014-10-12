@@ -7,5 +7,10 @@ GET     /                           controllers.Application.index()
 GET     /eventos/novo				controllers.EventosController.novo()
 POST	/eventos/novo				controllers.EventosController.cria()
 GET 	/eventos					controllers.EventosController.lista()
+
+#admin
+GET 	/eventos/admin/aprova/$id<[0-9]+>   	controllers.admin.TodosEventosController.aprova(id: Integer)
+GET 	/eventos/admin					controllers.admin.TodosEventosController.todos()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -43,6 +43,8 @@ public class Evento extends Model{
 	private Calendar dataDeInicio;
 	private Calendar dataDeFim;
 	private String caminhoImagem;
+	private boolean aprovado;
+	
 	
 	public List<ValidationError> validate(){
 		ArrayList<ValidationError> errors = new ArrayList<>();
@@ -158,5 +160,15 @@ public class Evento extends Model{
 
 	public void setCaminhoImagem(String caminhoImagem) {
 		this.caminhoImagem = caminhoImagem;
+	}
+
+
+	public boolean isAprovado() {
+		return aprovado;
+	}
+
+
+	public void setAprovado(boolean aprovado) {
+		this.aprovado = aprovado;
 	}
 }

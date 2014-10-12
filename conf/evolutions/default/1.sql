@@ -13,6 +13,8 @@ create table evento (
   nome                      varchar(255),
   data_de_inicio            timestamp,
   data_de_fim               timestamp,
+  caminho_imagem            varchar(255),
+  aprovado                  boolean,
   constraint ck_evento_estado check (estado in ('PE','PB','RJ','BR')),
   constraint pk_evento primary key (id))
 ;
